@@ -9,5 +9,5 @@ sed -i "s;^elasticsearch:.*;elasticsearch: ${KIBANA_ES_URL};" "/opt/kibana-${KIB
 sed -i "s;^kibana_index:.*;kibana_index: ${KIBANA_INDEX};" "/opt/kibana-${KIBANA_VERSION}/config/kibana.yml"
 
 exec /opt/elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch -Des.http.port=9200 &
-exec /opt/logstash-${LOGSTASH_VERSION}/bin/logstash -e 'input { stdin { } } output { elasticsearch { host => localhost } }' &
+exec /opt/logstash-${LOGSTASH_VERSION}/bin/logstash -f /etc/logstash/conf.d/  &
 exec /opt/kibana-${KIBANA_VERSION}/bin/kibana
