@@ -16,15 +16,20 @@ RUN set -x \
                                                supervisor \
                                                logstash \
                                                nginx \
-  && apt-get purge -y --auto-remove wget \
-  && apt-get clean \
-  && apt-get autoclean \
-  && apt-get autoremove \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+                                               less \
+                                               nano \
+                                               net-tools \
+#  && apt-get purge -y --auto-remove wget \
+#  && apt-get clean \
+#  && apt-get autoclean \
+#  && apt-get autoremove \
+#  && rm -rf /var/lib/apt/lists/*
+&& rm -rf /tmp/* /var/tmp/*
 
 # Install Kibana and Configure Nginx
 ADD https://download.elastic.co/kibana/kibana/kibana-$KIBANA_VERSION.tar.gz /opt/
 ADD conf/kibana.conf /etc/nginx/sites-available/
+ADD conf/logstash-log4j.conf /etc/logstash/conf.d/
 
 # Configure Nginx
 RUN cd /opt \
@@ -48,6 +53,6 @@ ADD conf/supervisord.conf /etc/supervisor/conf.d/
 VOLUME ["/etc/logstash/conf.d"]
 VOLUME ["/etc/nginx"]
 
-EXPOSE 80 443 9200
+EXPOSE 80 443 9200 12345
 
 CMD ["/usr/bin/supervisord"]
