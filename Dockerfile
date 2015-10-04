@@ -2,16 +2,16 @@ FROM java:8-jre
 
 MAINTAINER blacktop, https://github.com/blacktop
 
-ENV KIBANA_VERSION 4.1.1-linux-x64
+ENV KIBANA_VERSION 4.1.2-linux-x64
 
 # Install ELK Required Dependancies
 RUN set -x \
-  && apt-get -qq update \
-  && apt-get -qy install wget --no-install-recommends \
+  && apt-get update \
+  && apt-get -y install wget --no-install-recommends \
   && wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - \
   && echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" >> /etc/apt/sources.list \
   && echo "deb http://packages.elasticsearch.org/logstash/1.5/debian stable main" >> /etc/apt/sources.list \
-  && apt-get -qq update && apt-get -qy install elasticsearch \
+  && apt-get update && apt-get -y install elasticsearch \
                                                apache2-utils \
                                                supervisor \
                                                logstash \
