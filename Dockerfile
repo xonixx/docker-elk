@@ -2,23 +2,24 @@ FROM java:8-jre
 
 MAINTAINER blacktop, https://github.com/blacktop
 
-ENV KIBANA_VERSION 4.1.2-linux-x64
+ENV KIBANA_VERSION 4.2.0-linux-x64
 
 # Install ELK Required Dependancies
 RUN set -x \
   && apt-get update \
   && apt-get -y install wget --no-install-recommends \
   && wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - \
-  && echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" >> /etc/apt/sources.list \
-  && echo "deb http://packages.elasticsearch.org/logstash/1.5/debian stable main" >> /etc/apt/sources.list \
-  && apt-get update && apt-get -y install elasticsearch \
-                                               apache2-utils \
-                                               supervisor \
-                                               logstash \
-                                               nginx \
-                                               less \
-                                               nano \
-                                               net-tools \
+  && echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" >> /etc/apt/sources.list \
+  && echo "deb http://packages.elasticsearch.org/logstash/2.0/debian stable main" >> /etc/apt/sources.list \
+  && apt-get update \
+  && apt-get -y install elasticsearch \
+        apache2-utils \
+        supervisor \
+        logstash \
+        nginx --no-install-recommends \
+        less \
+        nano \
+        net-tools \
 #  && apt-get purge -y --auto-remove wget \
 #  && apt-get clean \
 #  && apt-get autoclean \
@@ -53,6 +54,6 @@ ADD conf/supervisord.conf /etc/supervisor/conf.d/
 VOLUME ["/etc/logstash/conf.d"]
 VOLUME ["/etc/nginx"]
 
-EXPOSE 80 443 9200 12345
+EXPOSE 80 443 9200 9300 12345
 
 CMD ["/usr/bin/supervisord"]
