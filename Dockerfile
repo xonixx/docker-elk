@@ -29,8 +29,8 @@ RUN set -x \
 
 # Install Kibana and Configure Nginx
 ADD https://download.elastic.co/kibana/kibana/kibana-$KIBANA_VERSION.tar.gz /opt/
-ADD conf/kibana.conf /etc/nginx/sites-available/
-ADD conf/logstash-log4j.conf /etc/logstash/conf.d/
+COPY conf/kibana.conf /etc/nginx/sites-available/
+COPY conf/logstash-log4j.conf /etc/logstash/conf.d/
 
 # Configure Nginx
 RUN cd /opt \
@@ -49,7 +49,8 @@ RUN cd /opt \
 # Add admin/admin web user account
 COPY conf/htpasswd /etc/nginx/.htpasswd
 
-ADD conf/supervisord.conf /etc/supervisor/conf.d/
+COPY conf/supervisord.conf /etc/supervisor/conf.d/
+COPY conf/scripts/configure.sh /scripts/configure.sh
 
 VOLUME ["/etc/logstash/conf.d"]
 VOLUME ["/etc/nginx"]
