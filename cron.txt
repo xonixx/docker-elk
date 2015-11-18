@@ -1,0 +1,4 @@
+
+# kibana 4.2 leaks memory : https://github.com/elastic/kibana/issues/5170
+# restart it every hour
+0 * * * * docker exec elk supervisorctl restart kibana
