@@ -1,8 +1,9 @@
 FROM java:8-jre
 
 MAINTAINER blacktop, https://github.com/blacktop
+MAINTAINER xonixx, https://github.com/xonixx
 
-ENV KIBANA_VERSION 4.2.0-linux-x64
+ENV KIBANA_VERSION 4.3.1-linux-x64
 
 # Install ELK Required Dependancies
 RUN set -x \
@@ -10,7 +11,7 @@ RUN set -x \
   && apt-get -y install wget --no-install-recommends \
   && wget -qO - http://packages.elasticsearch.org/GPG-KEY-elasticsearch | apt-key add - \
   && echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" >> /etc/apt/sources.list \
-  && echo "deb http://packages.elasticsearch.org/logstash/2.0/debian stable main" >> /etc/apt/sources.list \
+  && echo "deb http://packages.elasticsearch.org/logstash/2.1/debian stable main" >> /etc/apt/sources.list \
   && apt-get update \
   && apt-get -y install elasticsearch \
         apache2-utils \
