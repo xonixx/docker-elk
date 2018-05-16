@@ -25,7 +25,7 @@ RUN set -x \
 #  && rm -rf /var/lib/apt/lists/*
 && rm -rf /tmp/* /var/tmp/*
 
-COPY conf/logstash-log4j.conf /etc/logstash/conf.d/
+COPY conf/logstash.conf /etc/logstash/conf.d/
 COPY conf/supervisord.conf /etc/supervisor/conf.d/
 COPY conf/scripts/configure.sh /scripts/configure.sh
 
