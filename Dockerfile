@@ -15,6 +15,7 @@ RUN set -x \
         kibana \
         logstash \
         supervisor \
+        procps \
         less \
         nano \
        # net-tools \
