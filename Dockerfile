@@ -25,13 +25,6 @@ RUN set -x \
 #  && rm -rf /var/lib/apt/lists/*
 && rm -rf /tmp/* /var/tmp/*
 
-COPY conf/logstash.conf /etc/logstash/conf.d/
-COPY conf/supervisord.conf /etc/supervisor/conf.d/
-COPY conf/scripts/configure.sh /scripts/configure.sh
+EXPOSE 5601 9200 9300 4560
 
-VOLUME ["/etc/logstash/conf.d"]
-VOLUME ["/etc/nginx"]
-
-EXPOSE 5601 9200 9300 12345
-
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord", "-c", "/conf/supervisord.conf"]
