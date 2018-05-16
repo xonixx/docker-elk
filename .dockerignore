@@ -3,6 +3,5 @@ LICENSE
 README.md
 logstash/*
 screens/*
-conf/test_index.py
 docker-compose.yml
 .DS_Store
