@@ -12,7 +12,7 @@ RUN set -x \
   && apt-get update \
   && apt-get -y install \
         elasticsearch \
-        kibana \
+        kibana=6.4.3 \
         logstash \
         supervisor \
         procps \
