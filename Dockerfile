@@ -4,6 +4,7 @@ MAINTAINER xonixx, https://github.com/xonixx
 
 # Install ELK Required Dependancies
 RUN set -x \
+  && echo "Trigger update to 6.5.4" \
   && apt-get update \
   && apt-get -y install apt-transport-https \
   && wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | apt-key add - \
