@@ -8,4 +8,5 @@ sudo docker run -d --net=host --name elk \
  -v $mydir/conf:/conf \
  -t \
  --init \
+ --restart unless-stopped \
  xonixx/elk
