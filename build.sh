@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo docker build -t xonixx/elk .
+sudo docker build --no-cache -t xonixx/elk .

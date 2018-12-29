@@ -1,6 +1,5 @@
 FROM openjdk:8-jre
 
-MAINTAINER blacktop, https://github.com/blacktop
 MAINTAINER xonixx, https://github.com/xonixx
 
 # Install ELK Required Dependancies
