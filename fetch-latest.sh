@@ -16,7 +16,7 @@ dl_into_current_dir() {
     wget https://github.com/xonixx/docker-elk/archive/master.zip
     unzip master.zip
     rm -r ./docker-elk-master/es_data/
-    cp -r docker-elk-master/* .
+    cp -r docker-elk-master/* docker-elk-master/.dockerignore .
     rm -r master.zip docker-elk-master
 }
 

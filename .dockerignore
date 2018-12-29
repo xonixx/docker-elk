@@ -3,10 +3,7 @@
 elk-logo.png
 LICENSE
 README.md
-logstash/*
-screens/*
+screens/
 es_data/
 cron.txt
 *.sh
-docker-compose.yml
-.DS_Store
