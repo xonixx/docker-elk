@@ -11,5 +11,5 @@ This repo is fork of [blacktop/docker-elk](https://github.com/blacktop/docker-el
 
 Fetch latest files to (re-)build docker container: 
 ```
-curl -sSL https://raw.githubusercontent.com/xonixx/docker-elk/master/dl.sh?$(date +"%T") | bash
+curl -sSL https://raw.githubusercontent.com/xonixx/docker-elk/master/fetch-latest.sh?$(date +"%T") | bash
 ```
